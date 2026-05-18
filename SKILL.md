@@ -114,10 +114,14 @@ Wortlaut:
 - **Zeichenlimits sind hart**: Überschreitungen werden von AIS.chat abgeschnitten. Kürze elegant statt abrupt. Zähle Zeichen inklusive Leerzeichen, inklusive Pflichtbaustein.
 - **Rollenkonsistenz explizit machen**: Bei Dialogpartnern immer explizit formulieren, dass die Figur in der Rolle bleibt, auch wenn die Lehrkraft das nicht erwähnt hat.
 - **Keine didaktischen Meta-Kommentare** in den generierten Texten. Die Texte gehen direkt in AIS.chat-Formulare. Sie sprechen Lernende an oder instruieren die KI, nicht die Lehrkraft.
-- **Strukturierung mit Übersätzen**: Das Instruktionsfeld erlaubt Markup. Die offizielle FWU-Konvention im AIS.chat-Formular sieht vor:
+- **Sprachmodell-Feld nur mit Modellname**: Das Feld „Sprachmodell" in der Ausgabe enthält ausschließlich den Modellnamen (z.B. `GPT-5 nano`). Eine Begründung steht **nicht** in diesem Feld, da es 1:1 in das AIS.chat-Formular kopiert wird, dort ist nur Platz für einen Modellnamen.
+- **Modellwahl konservativ, Entscheidung bei der Lehrkraft**: Setze im Sprachmodell-Feld als Default ein effizientes Modell der unteren Leistungsklasse ein. Treffe die Wahl im Zweifel zugunsten des effizienteren Modells, die Lehrkraft kann jederzeit hochstufen, das Modellangebot unterscheidet sich nach Bundesland und ändert sich regelmäßig. Empfehle **nicht** automatisch ein stärkeres Modell, nur weil die Vorlage „komplex" wirkt. Im Empfehlungs-Abschnitt der Ausgabe immer auf die Modell-Übersicht verweisen: <https://mgkurz.github.io/ki-modell-auswahl/>
+- **Strukturierung mit Übersätzen**: Das Instruktionsfeld erlaubt einfaches Markup. Die offizielle FWU-Konvention im AIS.chat-Formular sieht vor:
   - **Lernszenario und Assistent**: Block-Überschriften in GROSSBUCHSTABEN (`ROLLE`, `KONTEXT`, `VERHALTEN`, `FORMAT`)
   - **Dialogpartner**: Block-Überschriften in Mixed Case (`Simulierte Person`, `Zielgruppe`, `Kontext`, `Verhalten`), kein FORMAT-Block
   - Ein Leerzeilen-Abstand zwischen Block-Überschrift und Block-Text
+  - **Kein Markdown-Heading-Syntax** (`#`, `##`, `###`) und **keine Fettmarkierung** (`**...**`) bei den Block-Überschriften. AIS.chat zeigt das Instruktionsfeld weitgehend als Plaintext, Markdown-Auszeichnungen bleiben sichtbar und stören das Layout. Die Block-Überschriften stehen schlicht als eigenständige Zeile (z.B. `ROLLE` allein in einer Zeile, dann Leerzeile, dann der Block-Text).
+  - Innerhalb der Blöcke sind nummerierte oder Bindestrich-Listen erlaubt und sinnvoll, wenn Schritte oder Aufzählungen vorkommen.
   Diese Konvention beibehalten, damit generierte Vorlagen optisch zu den offiziellen FWU-Vorlagen passen. Bei komplexen Vorlagen (z.B. funktionaler Dialogpartner im „Sid"-Stil) ist eine abweichende Struktur erlaubt, sollte aber bewusst gewählt werden.
 
 ## Ausgabeformat
@@ -127,7 +131,10 @@ Gib die Felder in exakt der Reihenfolge und mit exakt den Titeln aus, die in der
 Nach den Feldern: ein kurzer Abschnitt „Empfehlungen" mit genau dieser Struktur:
 
 - **Schultyp / Klassenstufe / Fach**: aus der Eingabe übernommen oder Platzhalter
+- **Modellwahl prüfen**: Der Vorschlag im Feld „Sprachmodell" ist ein konservativer Startpunkt. Welches Modell zum konkreten Einsatz, Tokenvolumen und Bundesland passt, entscheidet die Lehrkraft. Übersicht und Empfehlungen: <https://mgkurz.github.io/ki-modell-auswahl/> (Projektseite: <https://github.com/mgkurz/ki-modell-auswahl>)
 - **Hintergrundwissen**: Hinweis, dass in AIS.chat Dateien hochgeladen werden können (docx, pdf, md, txt). Dateien müssen **textbasiert und gut lesbar** sein, keine reinen Bild-PDFs oder gescannten Grafiken ohne OCR-Textlayer, da AIS.chat diese nicht verarbeiten kann. Bei komplexen Vorlagen Modularisierung mit Präfixen empfehlen (`00_CORE_…`, `01_…`)
 - **Weblinks**: Falls konkrete, geeignete Quellen bekannt sind, kurz nennen. Sonst Hinweis, dass die Lehrkraft 1-3 passende Webquellen ergänzen sollte
 - **Tokenvolumen und Nutzungszeit** (nur bei Lernszenario und Dialogpartner): Default 10 % / 45 Minuten, an Gruppengröße und Unterrichtseinheit anpassen
 - **Freigabe**: Schulintern und/oder via Link, je nach beabsichtigter Reichweite
+
+**Nach dem Empfehlungs-Abschnitt folgt nichts mehr.** Keine Selbst-Kritik an der eigenen Generierung, keine didaktische Meta-Reflexion, keine Hinweise auf mögliche Varianten, keine Begründung von Designentscheidungen, keine Rückblick-Zusammenfassung. Wenn während der Generierung echte Zweifel an einer Designentscheidung bestehen, gehören diese als **Rückfrage vor der Ausgabe**, nicht als Anhang danach. Die Ausgabe endet mit dem letzten Stichpunkt des Empfehlungs-Abschnitts.

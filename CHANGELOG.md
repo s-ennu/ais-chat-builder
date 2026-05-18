@@ -1,5 +1,17 @@
 # Changelog
 
+## v2.0.1 (2026-05-18) — Patch
+
+Präzisierungen an den Spezifikationen, keine Funktionsänderungen.
+
+### Geändert
+
+- Sprachmodell-Feld enthält nur noch den Modellnamen, keine Begründung im Feld selbst
+- Modellempfehlung entschärft: Default ist das effizienteste verfügbare Modell, keine automatische Hochstufung auf ein stärkeres Modell wegen empfundener Komplexität. Im Empfehlungs-Abschnitt der Ausgabe wird auf die Modell-Übersicht https://mgkurz.github.io/ki-modell-auswahl/ verwiesen
+- Block-Überschriften im Instruktionsfeld ohne Markdown-Heading-Syntax und ohne Fettmarkierung, da AIS.chat das Feld als Plaintext behandelt
+- Anti-Anhängsel-Regel im Ausgabeformat: nach dem Empfehlungs-Abschnitt folgt nichts mehr (keine Selbst-Kritik, keine Meta-Reflexion)
+- Ausgebautes Assistenten-Beispiel „Lesetext differenzieren" auf GPT-5 nano umgestellt, damit es zur neuen konservativen Default-Logik passt
+
 ## v2.0.0 (2026-05-13) — Breaking Change
 
 Komplette Überarbeitung wegen Umstellung der Plattform und der Vorlagen-Formularstruktur. Vorlagen aus v1.x sind nicht mehr direkt kompatibel.

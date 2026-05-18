@@ -33,9 +33,9 @@ Alle Limits gelten inklusive Leerzeichen.
    - Wird in der Übersicht angezeigt
 
 3. **Sprachmodell**
-   - Empfehlung mit kurzer Begründung
-   - Standard: GPT-5 nano für klar umrissene Figuren mit überschaubarer Logik (z.B. Emre, einfache historische Figur)
-   - GPT-5 mini für komplexe Dialogpartner mit mehrstufiger Logik, viel Hintergrundwissen oder differenziertem Verhalten je nach Lernstufe (z.B. „Sid"-artige Lernbegleiter)
+   - **Im Feld nur der Modellname** (z.B. `GPT-5 nano`). Keine Begründung im Feld selbst, da das Feld 1:1 ins AIS.chat-Formular kopiert wird.
+   - Default-Logik: Im Zweifel das effizienteste verfügbare Modell wählen. Die meisten Dialogpartner sind damit gut bedient. Ein leistungsstärkeres Modell **nicht** automatisch empfehlen, nur weil die Figur differenziert oder anspruchsvoll wirkt.
+   - Die Modellauswahl trifft am Ende die Lehrkraft, je nach Tokenvolumen, Kontext und Bundesland. Im Empfehlungs-Abschnitt immer auf die Übersicht verweisen: <https://mgkurz.github.io/ki-modell-auswahl/>
 
 4. **Instruktionen** (Hauptfeld, PFLICHTBAUSTEIN EINBAUEN)
    - Max. 10000 Zeichen

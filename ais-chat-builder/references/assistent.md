@@ -24,9 +24,9 @@ Alle Limits gelten inklusive Leerzeichen.
    - Kann auch als Mini-Steckbrief mit Platzhaltern formuliert sein, wenn der Assistent als Master-Prompt gedacht ist
 
 3. **Sprachmodell**
-   - Empfehlung mit kurzer Begründung
-   - Standard: GPT-5 nano für einfache, schnelle Aufgaben (Quiz, kurze Texte, Zusammenfassungen)
-   - GPT-5 mini für komplexere Generierungen (Arbeitsblätter mit Differenzierung, längere Drehbücher, Master-Prompts mit Verzweigungen, mehrstufige didaktische Logik)
+   - **Im Feld nur der Modellname** (z.B. `GPT-5 nano`). Keine Begründung im Feld selbst, da das Feld 1:1 ins AIS.chat-Formular kopiert wird.
+   - Default-Logik: Im Zweifel das effizienteste verfügbare Modell wählen. Die meisten Assistenten sind damit gut bedient. Ein leistungsstärkeres Modell **nicht** automatisch empfehlen, nur weil die Generierungs-Aufgabe anspruchsvoll wirkt.
+   - Die Modellauswahl trifft am Ende die Lehrkraft, je nach Tokenvolumen, Kontext und Bundesland. Im Empfehlungs-Abschnitt immer auf die Übersicht verweisen: <https://mgkurz.github.io/ki-modell-auswahl/>
 
 4. **Instruktionen** (Hauptfeld, PFLICHTBAUSTEIN EINBAUEN)
    - Max. 10000 Zeichen
@@ -109,7 +109,7 @@ Lesetext differenzieren
 Erzeugt zu einem vorgegebenen Lesetext drei Fassungen für unterschiedliche Leseniveaus: vereinfacht (A), original (B) und sprachlich angereichert (C). Für Lehrkräfte aller Fächer, die heterogene Klassen mit einem gemeinsamen Text arbeiten lassen wollen.
 
 **Sprachmodell:**
-GPT-5 mini
+GPT-5 nano
 
 **Instruktionen:**
 ROLLE
