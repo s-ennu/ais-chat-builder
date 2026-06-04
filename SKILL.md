@@ -81,7 +81,7 @@ Zielvorlagen:
 
 Wortlaut:
 
-> Antworte knapp und präzise. Vermeide Floskeln, Einleitungen und Zusammenfassungen. Formuliere so kurz wie nötig, damit die Aussage oder Rückfrage trägt. Stelle höchstens eine gezielte Rückfrage pro Antwort. Höre auf, sobald die Aufgabe erfüllt ist. Füge keine Zusatzideen oder weiterführenden Hinweise hinzu, wenn nicht danach gefragt wurde.
+> Antworte knapp und präzise. Vermeide Floskeln, Einleitungen und Zusammenfassungen. Formuliere so kurz wie nötig, damit die Aussage oder Rückfrage trägt. Stelle höchstens eine gezielte Rückfrage pro Antwort. Höre auf, sobald die Aufgabe erfüllt ist. Füge keine Zusatzideen oder weiterführenden Hinweise hinzu, wenn nicht danach gefragt wurde. Schreibe im normalen Fließtext. Setze Überschriften, Zwischenüberschriften, Trennlinien, Fettungen oder Aufzählungen nur ein, wenn die Aufgabe es ausdrücklich verlangt; bei kurzen Antworten von wenigen Sätzen verzichte darauf.
 
 ### BAUSTEIN_DIALOG_NEG
 
@@ -90,7 +90,7 @@ Zielvorlage:
 
 Wortlaut:
 
-> Keine Begrüßungsfloskeln, keine Meta-Kommentare über die eigene KI-Natur, keine ausschweifenden Erklärungen. Keine Wiederholung der Frage. Keine Aufzählungen, wenn ein Satz reicht. Keine Zusatzideen und keine "Möchten Sie noch …?"-Angebote am Ende einer Antwort.
+> Keine Begrüßungsfloskeln, keine Meta-Kommentare über die eigene KI-Natur, keine ausschweifenden Erklärungen. Keine Wiederholung der Frage. Keine Aufzählungen, wenn ein Satz reicht. Keine Zusatzideen und keine "Möchten Sie noch …?"-Angebote am Ende einer Antwort. Keine Überschriften, keine Zwischenüberschriften, keine Trennlinien, keine Fettungen, keine Tabellen. Schreibe wie eine Person im Gespräch.
 
 ### BAUSTEIN_WERKZEUG
 
@@ -99,7 +99,7 @@ Zielvorlage:
 
 Wortlaut:
 
-> Liefere direkt das angeforderte Ergebnis, ohne Einleitung, Rückversicherung oder abschließende Zusammenfassung. Keine Floskeln, kein Meta-Text über die Aufgabe. Wenn Informationen fehlen, stelle höchstens eine gezielte Rückfrage, bevor du startest. Nutze das vorgegebene Ausgabeformat strikt. Stoppe, wenn die Aufgabe erfüllt ist.
+> Liefere direkt das angeforderte Ergebnis, ohne Einleitung, Rückversicherung oder abschließende Zusammenfassung. Keine Floskeln, kein Meta-Text über die Aufgabe. Wenn Informationen fehlen, stelle höchstens eine gezielte Rückfrage, bevor du startest. Nutze das vorgegebene Ausgabeformat strikt. Strukturiere nur das Ergebnis selbst, kein dekoratives Beiwerk und keine Trennlinien zwischen kurzen Abschnitten. Stoppe, wenn die Aufgabe erfüllt ist.
 
 ### Regel zur Platzierung
 
@@ -116,13 +116,14 @@ Wortlaut:
 - **Keine didaktischen Meta-Kommentare** in den generierten Texten. Die Texte gehen direkt in AIS.chat-Formulare. Sie sprechen Lernende an oder instruieren die KI, nicht die Lehrkraft.
 - **Sprachmodell-Feld nur mit Modellname**: Das Feld „Sprachmodell" in der Ausgabe enthält ausschließlich den Modellnamen (z.B. `GPT-5 nano`). Eine Begründung steht **nicht** in diesem Feld, da es 1:1 in das AIS.chat-Formular kopiert wird, dort ist nur Platz für einen Modellnamen.
 - **Modellwahl konservativ, Entscheidung bei der Lehrkraft**: Setze im Sprachmodell-Feld als Default ein effizientes Modell der unteren Leistungsklasse ein. Treffe die Wahl im Zweifel zugunsten des effizienteren Modells, die Lehrkraft kann jederzeit hochstufen, das Modellangebot unterscheidet sich nach Bundesland und ändert sich regelmäßig. Empfehle **nicht** automatisch ein stärkeres Modell, nur weil die Vorlage „komplex" wirkt. Im Empfehlungs-Abschnitt der Ausgabe immer auf die Modell-Übersicht verweisen: <https://mgkurz.github.io/ki-modell-auswahl/>
-- **Strukturierung mit Übersätzen**: Das Instruktionsfeld erlaubt einfaches Markup. Die offizielle FWU-Konvention im AIS.chat-Formular sieht vor:
-  - **Lernszenario und Assistent**: Block-Überschriften in GROSSBUCHSTABEN (`ROLLE`, `KONTEXT`, `VERHALTEN`, `FORMAT`)
-  - **Dialogpartner**: Block-Überschriften in Mixed Case (`Simulierte Person`, `Zielgruppe`, `Kontext`, `Verhalten`), kein FORMAT-Block
-  - Ein Leerzeilen-Abstand zwischen Block-Überschrift und Block-Text
-  - **Kein Markdown-Heading-Syntax** (`#`, `##`, `###`) und **keine Fettmarkierung** (`**...**`) bei den Block-Überschriften. AIS.chat zeigt das Instruktionsfeld weitgehend als Plaintext, Markdown-Auszeichnungen bleiben sichtbar und stören das Layout. Die Block-Überschriften stehen schlicht als eigenständige Zeile (z.B. `ROLLE` allein in einer Zeile, dann Leerzeile, dann der Block-Text).
-  - Innerhalb der Blöcke sind nummerierte oder Bindestrich-Listen erlaubt und sinnvoll, wenn Schritte oder Aufzählungen vorkommen.
-  Diese Konvention beibehalten, damit generierte Vorlagen optisch zu den offiziellen FWU-Vorlagen passen. Bei komplexen Vorlagen (z.B. funktionaler Dialogpartner im „Sid"-Stil) ist eine abweichende Struktur erlaubt, sollte aber bewusst gewählt werden.
+- **Strukturierung des Instruktionsfelds mit Markdown**: Das Instruktionsfeld geht als Text in den Systemprompt des Modells ein. AIS.chat bettet es in einen durchgängig in Markdown formatierten Systemprompt ein (Hauptsektionen mit `##`, das Lehrkraft-Feld als Body unter einer `###`-Überschrift), rendert die Antworten als Markdown (`react-markdown` mit `remark-gfm`) und weist das Modell systemseitig ausdrücklich an, Markdown zu nutzen. Strukturiere das Instruktionsfeld daher selbst in Markdown:
+  - **Block-Überschriften als Markdown der vierten Ebene** (`#### Rolle`, `#### Kontext`, `#### Verhalten`, `#### Format`; beim Dialogpartner `#### Simulierte Person`, `#### Zielgruppe`, `#### Kontext`, `#### Verhalten`, kein FORMAT-Block). AIS.chat hängt das Instruktionsfeld unter eine `###`-Überschrift; `####` setzt die Hierarchie eine Ebene tiefer sauber fort, ohne mit den AIS.chat-eigenen Ebenen zu kollidieren. Mixed Case, keine Großbuchstaben.
+  - **Alternative für sehr kurze Vorlagen**: fette Labels statt Überschriften (`**Rolle**`, `**Verhalten**`), wenn eine eigene Heading-Ebene überdimensioniert wäre.
+  - **Listen** mit Bindestrich (`- `), da AIS.chat GitHub-Flavored Markdown rendert. Nummerierte Listen nur, wenn eine Reihenfolge gemeint ist.
+  - Ein Leerzeilen-Abstand zwischen Block-Überschrift und Block-Text.
+  - **Wichtige Unterscheidung, nicht verwechseln**: Markdown-Struktur *im Instruktionsfeld* hilft dem Modell beim Parsen der Konfiguration. Das ist etwas anderes als die Struktur *in der Antwort* des Bots. Wie der Bot antwortet (bei Dialog: knapp, im Fließtext, ohne Überschriften), steuern allein die Knappheitsbausteine. Ein mit `####` gegliedertes Instruktionsfeld erzeugt also keinen mit Überschriften gegliederten Chat, sofern der Knappheitsbaustein das unterbindet.
+  - Bei komplexen Vorlagen (z.B. funktionaler Dialogpartner im „Sid"-Stil) ist eine abweichende Struktur erlaubt, sollte aber bewusst gewählt werden.
+  - **Trade-off, transparent**: Das offizielle „Beispiel anzeigen" im AIS.chat-Formular nutzt Großbuchstaben- bzw. Mixed-Case-Zeilen ohne Markdown. Wer maximale optische Übereinstimmung mit diesem Formular-Beispiel sucht, kann bei Großbuchstaben bleiben; der funktionale Unterschied fürs Modell ist gering. Dieser Skill wählt bewusst Markdown (`####`), weil es konsistent mit dem tatsächlichen, durchgängig in Markdown gehaltenen Systemprompt-Container von AIS.chat ist.
 
 ## Ausgabeformat
 

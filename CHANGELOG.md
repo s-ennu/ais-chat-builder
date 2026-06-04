@@ -1,5 +1,21 @@
 # Changelog
 
+## v2.1.0 (2026-06-04) — Minor
+
+Umstellung der Block-Struktur im Instruktionsfeld auf Markdown und Verschärfung der Knappheitsbausteine. Beruht auf einer Analyse des AIS.chat-Quellcodes (FWU-DE/ais-chat).
+
+### Geändert
+
+- Block-Überschriften im Instruktionsfeld jetzt als Markdown der vierten Ebene (`#### Rolle`, `#### Kontext`, `#### Verhalten`, `#### Format`) in Mixed Case statt Großbuchstaben. Grund: AIS.chat bettet das Instruktionsfeld in einen durchgängig in Markdown gehaltenen Systemprompt ein, rendert Antworten als Markdown (react-markdown/remark-gfm) und weist das Modell selbst an, Markdown zu nutzen. **Nimmt die Aussage aus v2.0.1 zurück, AIS.chat behandle das Feld als Plaintext.**
+- Knappheitsbausteine überstimmen jetzt explizit die hauseigenen Formatvorgaben von AIS.chat (FORMAT_GUIDELINES): `BAUSTEIN_DIALOG` und `BAUSTEIN_DIALOG_NEG` steuern gegen ungefragte Überschriften, Trennlinien, Fettungen und Tabellen. FORMAT-Block-sicher formuliert, damit gewollte Tabellen oder Pläne erhalten bleiben.
+- `BAUSTEIN_WERKZEUG`: Zusatz gegen dekoratives Beiwerk, die Ergebnisstruktur des Assistenten bleibt bewusst erlaubt.
+- Ausgebaute Beispiele (Lernplan-Coach, Emre, Lesetext differenzieren) auf Markdown-Blöcke umgeschrieben.
+- Klare Unterscheidung dokumentiert: Markdown-Struktur im Instruktionsfeld (hilft dem Modell beim Parsen) ist nicht dasselbe wie Struktur in der Antwort (steuern die Knappheitsbausteine).
+
+### Neu
+
+- Build-Skript `build-skill.sh` packt die Auslieferungsdatei `ais-chat-builder.skill` mit dem erforderlichen Top-Level-Ordner `ais-chat-builder/`.
+
 ## v2.0.1 (2026-05-18) — Patch
 
 Präzisierungen an den Spezifikationen, keine Funktionsänderungen.

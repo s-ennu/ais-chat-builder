@@ -31,12 +31,12 @@ Alle Limits gelten inklusive Leerzeichen.
 4. **Instruktionen** (Hauptfeld, PFLICHTBAUSTEIN EINBAUEN)
    - Max. 10000 Zeichen
    - Hier liegt die eigentliche Konfiguration des Assistenten
-   - Strukturierung über Übersätze und Blöcke, Markup ist erlaubt und erwünscht
+   - Strukturierung über Markdown-Blöcke (siehe SKILL.md, Abschnitt „Strukturierung des Instruktionsfelds mit Markdown"). Block-Überschriften als `####` in Mixed Case.
    - Bewährte Block-Überschriften (nicht starr, je nach Anwendung anpassen):
-     - **ROLLE**: Wer oder was die KI in diesem Kontext sein soll
-     - **KONTEXT**: Hintergrund, Zielgruppe, didaktisches Setting, ggf. Verweis auf Hintergrundwissen
-     - **VERHALTEN**: Wie die KI vorgehen, antworten, nachfragen soll
-     - **FORMAT**: Strukturvorgabe für die Ausgabe (Tabelle, Abschnitte, Fließtext, Drehbuch …)
+     - **`#### Rolle`**: Wer oder was die KI in diesem Kontext sein soll
+     - **`#### Kontext`**: Hintergrund, Zielgruppe, didaktisches Setting, ggf. Verweis auf Hintergrundwissen
+     - **`#### Verhalten`**: Wie die KI vorgehen, antworten, nachfragen soll
+     - **`#### Format`**: Strukturvorgabe für die Ausgabe (Tabelle, Abschnitte, Fließtext, Drehbuch …)
    - Alternative Strukturen sind zulässig, wenn sie zur Aufgabe besser passen (z.B. nummerierte Arbeitsschritte, „Didaktische Anforderungen" mit Liste, „Erwünschtes Ausgabeformat" als Tabellenkopf)
    - **BAUSTEIN_WERKZEUG wortgleich** am Ende, durch Absatzumbruch abgesetzt. Wenn ein FORMAT-Block vorhanden ist, gehört der Baustein direkt darunter, ansonsten ans Ende des Instruktionsfelds
    - Die Instruktion ist eine direkte Anweisung AN die KI, nicht eine Beschreibung für die Lehrkraft
@@ -62,7 +62,7 @@ Alle Limits gelten inklusive Leerzeichen.
 
 ### BAUSTEIN_WERKZEUG (Ende des Instruktionsfelds)
 
-> Liefere direkt das angeforderte Ergebnis, ohne Einleitung, Rückversicherung oder abschließende Zusammenfassung. Keine Floskeln, kein Meta-Text über die Aufgabe. Wenn Informationen fehlen, stelle höchstens eine gezielte Rückfrage, bevor du startest. Nutze das vorgegebene Ausgabeformat strikt. Stoppe, wenn die Aufgabe erfüllt ist.
+> Liefere direkt das angeforderte Ergebnis, ohne Einleitung, Rückversicherung oder abschließende Zusammenfassung. Keine Floskeln, kein Meta-Text über die Aufgabe. Wenn Informationen fehlen, stelle höchstens eine gezielte Rückfrage, bevor du startest. Nutze das vorgegebene Ausgabeformat strikt. Strukturiere nur das Ergebnis selbst, kein dekoratives Beiwerk und keine Trennlinien zwischen kurzen Abschnitten. Stoppe, wenn die Aufgabe erfüllt ist.
 
 ## Qualitätschecks (intern, nicht ausgeben)
 
@@ -98,7 +98,7 @@ Konvention aus diesem Beispiel:
 - Sehr knappe Sprache, ein Satz pro Block reicht
 - Bezug auf Hintergrundwissen direkt im KONTEXT formuliert
 
-Vom Skill generierte Vorlagen folgen dieser Konvention, ergänzen aber den Pflichtbaustein am Ende des Instruktionsfelds und mindestens drei Promptvorschläge.
+Vom Skill generierte Vorlagen behalten die knappe Sprache und die Block-Logik bei, weichen aber bewusst von den Großbuchstaben ab und setzen die Block-Überschriften als Markdown (`#### Rolle`, `#### Kontext`, `#### Verhalten`, `#### Format`); Begründung siehe SKILL.md. Sie ergänzen den Pflichtbaustein am Ende des Instruktionsfelds und mindestens drei Promptvorschläge.
 
 ## Ausgebautes Beispiel: Differenzierungshilfe Lesetext
 
@@ -112,13 +112,13 @@ Erzeugt zu einem vorgegebenen Lesetext drei Fassungen für unterschiedliche Lese
 GPT-5 nano
 
 **Instruktionen:**
-ROLLE
+#### Rolle
 Du unterstützt Lehrkräfte beim Differenzieren von Lesetexten für heterogene Lerngruppen.
 
-KONTEXT
+#### Kontext
 Die Lehrkraft fügt einen Ausgangstext ein. Ziel ist es, daraus drei Fassungen für unterschiedliche Leseniveaus zu erzeugen, ohne den inhaltlichen Gehalt zu verändern.
 
-VERHALTEN
+#### Verhalten
 1. Analysiere den Ausgangstext auf Satzlänge, Fachbegriffe und Konjunktionsgebrauch.
 2. Erstelle Fassung A (vereinfacht): Sätze maximal 12 Wörter, keine Schachtelsätze, Fachbegriffe erklärt in Klammern, Aktiv statt Passiv.
 3. Gib Fassung B (original) unverändert wieder.
@@ -126,10 +126,10 @@ VERHALTEN
 
 Regeln: Länge jeder Fassung innerhalb ±20 % der Originallänge halten. Inhaltliche Aussagen dürfen nicht verändert werden, nur sprachliche Komplexität. Keine neuen Informationen in Fassung A, keine Kürzungen in Fassung C.
 
-FORMAT
+#### Format
 Drei Abschnitte mit Überschriften „Fassung A (vereinfacht)", „Fassung B (original)", „Fassung C (angereichert)". Darunter jeweils der Text als Fließtext. Am Schluss eine Tabelle mit drei Zeilen (A/B/C) und drei Spalten: „durchschnittliche Satzlänge (Wörter)", „Anzahl Fachbegriffe", „empfohlene Klassenstufe".
 
-Liefere direkt das angeforderte Ergebnis, ohne Einleitung, Rückversicherung oder abschließende Zusammenfassung. Keine Floskeln, kein Meta-Text über die Aufgabe. Wenn Informationen fehlen, stelle höchstens eine gezielte Rückfrage, bevor du startest. Nutze das vorgegebene Ausgabeformat strikt. Stoppe, wenn die Aufgabe erfüllt ist.
+Liefere direkt das angeforderte Ergebnis, ohne Einleitung, Rückversicherung oder abschließende Zusammenfassung. Keine Floskeln, kein Meta-Text über die Aufgabe. Wenn Informationen fehlen, stelle höchstens eine gezielte Rückfrage, bevor du startest. Nutze das vorgegebene Ausgabeformat strikt. Strukturiere nur das Ergebnis selbst, kein dekoratives Beiwerk und keine Trennlinien zwischen kurzen Abschnitten. Stoppe, wenn die Aufgabe erfüllt ist.
 
 **Promptvorschlag 1:**
 Differenziere diesen Sachtext zur Photosynthese für Klasse 7.
