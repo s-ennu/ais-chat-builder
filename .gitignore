@@ -1,0 +1,32 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+
+# Editor / IDE
+.vscode/*
+!.vscode/extensions.json
+.idea/
+
+# Geheimnisse, niemals committen
+.env
+.env.*
+*.key
+*.pem
+
+# Temporäres
+*.log
+*.tmp
+
+# Build-Artefakt: das gepackte Skill-ZIP gehört nicht in main,
+# sondern als Datei an ein GitHub-Release.
+*.skill
+
+# Claude Code: lokale Einstellungen und Freigaben, nicht teilen
+.claude/settings.local.json
+
+# Interne Arbeitsdateien, nicht veröffentlichen
+werkstatt/
+archive/

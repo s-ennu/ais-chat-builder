@@ -22,7 +22,7 @@ Der Skill enthält **Knappheitsregeln (Pflichtbausteine gegen Schwätzigkeit)**:
 
 1. Diesen Repository-Inhalt herunterladen oder klonen
 2. In Claude → Einstellungen → Capabilities → Skills → Skill hinzufügen
-3. Den Ordner `ais-chat-builder` hochladen oder den `.skill`-Container aus dem [neuesten Release](../../releases/latest) verwenden
+3. Den `.skill`-Container aus dem [neuesten Release](../../releases/latest) verwenden. Alternativ den Repo-Inhalt (`SKILL.md` und `references/`) in einen Ordner `ais-chat-builder/` legen und diesen hochladen
 
 ## Verwendung
 
