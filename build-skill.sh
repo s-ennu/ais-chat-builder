@@ -27,7 +27,7 @@ OUTPUT="$REPO_ROOT/$SKILL_NAME.skill"
 VERSION="$(grep -m1 '^## v' CHANGELOG.md | sed -E 's/^## (v[0-9.]+).*/\1/' || true)"
 
 # Diese Inhalte gehören in den Skill.
-CONTENTS=("SKILL.md" "references" "LICENSE")
+CONTENTS=("SKILL.md" "references" "LICENSE" "NOTICE")
 
 # Vorhandensein prüfen.
 for item in "${CONTENTS[@]}"; do
@@ -45,6 +45,7 @@ mkdir "$STAGING/$SKILL_NAME"
 cp SKILL.md "$STAGING/$SKILL_NAME/"
 cp -R references "$STAGING/$SKILL_NAME/"
 cp LICENSE "$STAGING/$SKILL_NAME/"
+cp NOTICE "$STAGING/$SKILL_NAME/"
 
 # Altes Paket entfernen, damit zip nicht hineinpackt.
 rm -f "$OUTPUT"

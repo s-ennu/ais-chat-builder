@@ -27,11 +27,13 @@ Alle Limits gelten inklusive Leerzeichen.
    - **Im Feld nur der Modellname** (z.B. `GPT-5 nano`). Keine Begründung im Feld selbst, da das Feld 1:1 ins AIS.chat-Formular kopiert wird.
    - Default-Logik: Im Zweifel das effizienteste verfügbare Modell wählen. Die meisten Assistenten sind damit gut bedient. Ein leistungsstärkeres Modell **nicht** automatisch empfehlen, nur weil die Generierungs-Aufgabe anspruchsvoll wirkt.
    - Die Modellauswahl trifft am Ende die Lehrkraft, je nach Tokenvolumen, Kontext und Bundesland. Im Empfehlungs-Abschnitt immer auf die Übersicht verweisen: <https://mgkurz.github.io/ki-modell-auswahl/>
+   - Auswählbare Modelle und ihre Leistungsklassen: siehe Abschnitt „Verfügbare Modelle" in `SKILL.md`. Default ist ein Modell der unteren Klasse, im Zweifel `GPT-5 nano`.
 
 4. **Instruktionen** (Hauptfeld, PFLICHTBAUSTEIN EINBAUEN)
    - Max. 10000 Zeichen
    - Hier liegt die eigentliche Konfiguration des Assistenten
    - Strukturierung über Markdown-Blöcke (siehe SKILL.md, Abschnitt „Strukturierung des Instruktionsfelds mit Markdown"). Block-Überschriften als `####` in Mixed Case.
+   - **Ausgabe in einem Codeblock** (siehe SKILL.md, „Ausgabeformat"), damit das `####`-Markup beim Kopieren erhalten bleibt und nicht vom Chat-Client weggerendert wird.
    - Bewährte Block-Überschriften (nicht starr, je nach Anwendung anpassen):
      - **`#### Rolle`**: Wer oder was die KI in diesem Kontext sein soll
      - **`#### Kontext`**: Hintergrund, Zielgruppe, didaktisches Setting, ggf. Verweis auf Hintergrundwissen
@@ -103,15 +105,22 @@ Vom Skill generierte Vorlagen behalten die knappe Sprache und die Block-Logik be
 ## Ausgebautes Beispiel: Differenzierungshilfe Lesetext
 
 **Name des Assistenten:**
+```
 Lesetext differenzieren
+```
 
 **Kurzbeschreibung:**
+```
 Erzeugt zu einem vorgegebenen Lesetext drei Fassungen für unterschiedliche Leseniveaus: vereinfacht (A), original (B) und sprachlich angereichert (C). Für Lehrkräfte aller Fächer, die heterogene Klassen mit einem gemeinsamen Text arbeiten lassen wollen.
+```
 
 **Sprachmodell:**
+```
 GPT-5 nano
+```
 
 **Instruktionen:**
+```
 #### Rolle
 Du unterstützt Lehrkräfte beim Differenzieren von Lesetexten für heterogene Lerngruppen.
 
@@ -130,18 +139,29 @@ Regeln: Länge jeder Fassung innerhalb ±20 % der Originallänge halten. Inhaltl
 Drei Abschnitte mit Überschriften „Fassung A (vereinfacht)", „Fassung B (original)", „Fassung C (angereichert)". Darunter jeweils der Text als Fließtext. Am Schluss eine Tabelle mit drei Zeilen (A/B/C) und drei Spalten: „durchschnittliche Satzlänge (Wörter)", „Anzahl Fachbegriffe", „empfohlene Klassenstufe".
 
 Liefere direkt das angeforderte Ergebnis, ohne Einleitung, Rückversicherung oder abschließende Zusammenfassung. Keine Floskeln, kein Meta-Text über die Aufgabe. Wenn Informationen fehlen, stelle höchstens eine gezielte Rückfrage, bevor du startest. Nutze das vorgegebene Ausgabeformat strikt. Strukturiere nur das Ergebnis selbst, kein dekoratives Beiwerk und keine Trennlinien zwischen kurzen Abschnitten. Stoppe, wenn die Aufgabe erfüllt ist.
+```
 
 **Promptvorschlag 1:**
+```
 Differenziere diesen Sachtext zur Photosynthese für Klasse 7.
+```
 
 **Promptvorschlag 2:**
+```
 Erstelle drei Fassungen dieses Zeitungsartikels zum Klimagipfel.
+```
 
 **Promptvorschlag 3:**
+```
 Differenziere den folgenden Auszug aus „Emil und die Detektive" für Klasse 5.
+```
 
 **Promptvorschlag 4:**
+```
 Passe diesen Geschichtstext zur Industrialisierung in drei Niveaustufen an.
+```
 
 **Promptvorschlag 5:**
+```
 Erzeuge drei Fassungen dieser Aufgabenstellung in Mathematik (Textaufgabe).
+```

@@ -30,11 +30,13 @@ Alle Limits gelten inklusive Leerzeichen.
    - **Im Feld nur der Modellname** (z.B. `GPT-5 nano`). Keine Begründung im Feld selbst, da das Feld 1:1 ins AIS.chat-Formular kopiert wird.
    - Default-Logik: Im Zweifel das effizienteste verfügbare Modell wählen. Die meisten Lernszenarien sind damit gut bedient. Ein leistungsstärkeres Modell **nicht** automatisch empfehlen, nur weil das Szenario inhaltlich anspruchsvoll wirkt.
    - Die Modellauswahl trifft am Ende die Lehrkraft, je nach Tokenvolumen, Kontext und Bundesland. Im Empfehlungs-Abschnitt immer auf die Übersicht verweisen: <https://mgkurz.github.io/ki-modell-auswahl/>
+   - Auswählbare Modelle und ihre Leistungsklassen: siehe Abschnitt „Verfügbare Modelle" in `SKILL.md`. Default ist ein Modell der unteren Klasse, im Zweifel `GPT-5 nano`.
 
 4. **Instruktionen** (Hauptfeld, PFLICHTBAUSTEIN EINBAUEN)
    - Max. 10000 Zeichen
    - Hier liegt die Konfiguration des Verhaltens von AIS.chat im Lernszenario
    - Strukturierung über Markdown-Blöcke (siehe SKILL.md, Abschnitt „Strukturierung des Instruktionsfelds mit Markdown"). Block-Überschriften als `####` in Mixed Case.
+   - **Ausgabe in einem Codeblock** (siehe SKILL.md, „Ausgabeformat"), damit das `####`-Markup beim Kopieren erhalten bleibt und nicht vom Chat-Client weggerendert wird.
    - Bewährte Block-Überschriften (nicht starr, je nach Anwendung anpassen):
      - **`#### Rolle`**: Wie AIS.chat in diesem Lernszenario auftritt (Lerncoach, Schreibbegleiter, Recherchehelfer …). Kein Rollenspiel im Sinne einer simulierten Person, sondern eine funktionale Rolle als KI-Begleitung.
      - **`#### Kontext`**: Lernziel, Zielgruppe, fachliche Verortung, Bezug zum Unterricht
@@ -110,15 +112,22 @@ Vom Skill generierte Vorlagen behalten die knappe Sprache und die Block-Logik be
 ## Ausgebautes Beispiel: Lernplan-Coach für Prüfungsvorbereitung
 
 **Name des Lernszenarios:**
+```
 Lernplan-Coach für deine nächste Prüfung
+```
 
 **Kurzbeschreibung:**
+```
 Mit Hilfe der KI erstellst du einen realistischen Wochenplan für deine Prüfungsvorbereitung. Du beantwortest ein paar Fragen zu Fach, Themen, Zeit und Vorwissen, dann bekommst du einen strukturierten Plan inklusive Lernphasen, Wiederholungen und Pausen.
+```
 
 **Sprachmodell:**
+```
 GPT-5 nano
+```
 
 **Instruktionen:**
+```
 #### Rolle
 Du bist ein erfahrener Lerncoach für Schülerinnen und Schüler der Sekundarstufe.
 
@@ -134,6 +143,9 @@ Antworte knapp und präzise. Vermeide Floskeln, Einleitungen und Zusammenfassung
 
 #### Format
 Erstelle den Lernplan als Tabelle mit den Spalten „Tag", „Zeitslot", „Thema", „Aktivität", „Wiederholung/neu". Plane bewusste Pausen ein und mindestens einen freien Tag oder Pufferblock vor der Prüfung. Die Lernstrategien folgen unterhalb der Tabelle als nummerierte Liste mit kurzer Begründung.
+```
 
 **Arbeitsauftrag:**
+```
 Erstelle gemeinsam mit der KI einen realistischen Lernplan für deine nächste Prüfung. Beantworte zuerst die Fragen der KI ehrlich, damit der Plan zu deiner Situation passt. Am Ende bekommst du eine Tabelle und drei passende Lernstrategien.
+```

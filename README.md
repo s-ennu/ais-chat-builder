@@ -34,8 +34,24 @@ Im Claude-Chat den Skill aufrufen und das Anliegen beschreiben:
 
 Der Skill liefert die fertigen Feldinhalte. Diese direkt in [AIS.chat](https://app.ais-chat.schule) in die entsprechenden Vorlagenfelder kopieren.
 
+## Herkunft und Attribution
+
+Diese Version ist eine **bearbeitete Fassung (Derivat)** des Skills
+[**ais-chat-builder**](https://github.com/mgkurz/ais-chat-builder) von
+**Martin Kurz** ([@mgkurz](https://github.com/mgkurz)).
+
+- **Originalwerk:** © 2026 Martin Kurz — <https://github.com/mgkurz/ais-chat-builder>
+- **Lizenz des Originals:** [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
+- **Änderungen:** Modellliste ergänzt (v2.2.0), siehe [CHANGELOG.md](CHANGELOG.md) und [NOTICE](NOTICE)
+- **Bearbeitet von:** _&lt;Name oder GitHub-Handle eintragen&gt;_
+
+Die Nennung erfolgt ausschließlich als Quellenangabe und bedeutet nicht, dass
+Martin Kurz diese bearbeitete Fassung unterstützt oder gutheißt.
+
 ## Lizenz
 
 [CC BY-SA 4.0](LICENSE)
 
-Beiträge und Inspirationsquellen siehe [CHANGELOG.md](CHANGELOG.md).
+Diese bearbeitete Fassung steht gemäß der **ShareAlike-Pflicht** unter derselben
+Lizenz wie das Original. Vollständige Attribution in [NOTICE](NOTICE), Beiträge
+und Inspirationsquellen in [CHANGELOG.md](CHANGELOG.md).

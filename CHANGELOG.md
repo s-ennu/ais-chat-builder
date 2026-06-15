@@ -1,5 +1,30 @@
 # Changelog
 
+## v2.2.0 (2026-06-15) — Minor
+
+Erste Version der bearbeiteten Fassung (Derivat) auf Basis des Originals von Martin Kurz, weiterhin unter CC BY-SA 4.0. Drei inhaltliche Änderungen: konkrete Modellliste, kopierfreundliche Codeblock-Ausgabe und Attributionsdateien.
+
+### Neu
+
+- **Modellliste:** Abschnitt „Verfügbare Modelle" in `SKILL.md` mit den in AIS.chat auswählbaren Modellen (GPT-5.5, GPT-5, GPT-5 mini, GPT-5 nano, GPT-4o-mini, o3-mini, Llama-3.1-8B, Llama-3.3-70B, Mistral Nemo Instruct, Gemini 3.1 Lite), gruppiert in untere/mittlere/obere Leistungsklasse. Bisher kannte der Skill nur die Auswahl-*Logik* („konservativ, untere Leistungsklasse") und das Beispiel `GPT-5 nano`, nicht die tatsächlichen Modellnamen.
+- Regel ergänzt: Sprachmodell-Feld nur mit Namen exakt aus dieser Liste; Default untere Klasse, im Zweifel `GPT-5 nano`.
+
+### Geändert
+
+- **Ausgabeformat (kopierfreundlich):** Jeder Feldwert wird jetzt in einem Codeblock ausgegeben (zwingend für das Instruktionsfeld). So bleibt das Markdown-Markup (`####`, `-`) beim Kopieren erhalten und wird nicht vom Chat-Client weggerendert; das Feld lässt sich über den Kopier-Button 1:1 ins AIS.chat-Formular übernehmen. Der Abschnitt „Empfehlungen" bleibt bewusst Fließtext. Alle ausgebauten Beispiele (Emre, Lernplan-Coach, Lesetext differenzieren) entsprechend umgestellt.
+- Bullet „Modellwahl konservativ" verweist jetzt auf den neuen Abschnitt „Verfügbare Modelle".
+- In allen drei Referenzdateien (`dialogpartner.md`, `lernszenario.md`, `assistent.md`) zwei Pointer ergänzt: auf die Modellliste und auf die Codeblock-Regel im Instruktionsfeld.
+
+### Fork und Attribution
+
+- Diese Fassung ist ein Derivat des Originals **ais-chat-builder** von **Martin Kurz** (<https://github.com/mgkurz/ais-chat-builder>) und steht gemäß ShareAlike unter derselben Lizenz, **CC BY-SA 4.0**.
+- `NOTICE` mit vollständiger Attribution hinzugefügt und über `build-skill.sh` ins Skill-Paket aufgenommen, damit die Quellenangabe mit dem `.skill` mitwandert.
+- README um den Abschnitt „Herkunft und Attribution" ergänzt (Derivat-Hinweis, Originalautor, Link, ShareAlike, Hinweis auf fehlendes Endorsement).
+
+### Hinweis
+
+- Die Leistungsklassen-Einteilung folgt der Namens-/Größenkonvention der Anbieter, nicht eigenen Messungen. Das Angebot variiert nach Bundesland und ändert sich; die Modell-Übersicht <https://mgkurz.github.io/ki-modell-auswahl/> bleibt maßgeblich.
+
 ## v2.1.0 (2026-06-04) — Minor
 
 Umstellung der Block-Struktur im Instruktionsfeld auf Markdown und Verschärfung der Knappheitsbausteine. Beruht auf einer Analyse des AIS.chat-Quellcodes (FWU-DE/ais-chat).

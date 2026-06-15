@@ -1,0 +1,32 @@
+ais-chat-builder
+================
+
+Dieses Werk ist eine bearbeitete Fassung (Derivat) von:
+
+  ais-chat-builder
+  von Martin Kurz (https://github.com/mgkurz)
+  Quelle: https://github.com/mgkurz/ais-chat-builder
+  Lizenz: Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)
+          https://creativecommons.org/licenses/by-sa/4.0/
+
+Originalwerk: Copyright (c) 2026 Martin Kurz.
+
+Änderungen in dieser bearbeiteten Fassung
+------------------------------------------
+- v2.2.0: Abschnitt „Verfügbare Modelle" mit konkreter Modellliste in SKILL.md
+  ergänzt; Pointer darauf in den Referenzdateien. Vollständige Historie in
+  CHANGELOG.md.
+
+Bearbeitet von: <NAME ODER GITHUB-HANDLE EINTRAGEN>
+
+Lizenz dieser Fassung
+---------------------
+Diese bearbeitete Fassung wird gemäß der ShareAlike-Pflicht unter denselben
+Bedingungen weitergegeben: CC BY-SA 4.0.
+
+Die Nennung von Martin Kurz erfolgt ausschließlich als Quellenangabe. Sie
+bedeutet nicht, dass er diese bearbeitete Fassung unterstützt oder gutheißt.
+
+Inspiration des Originals (laut CHANGELOG.md): ein geteilter Prompt von Marcus
+Krogmann sowie fachliche Diskussionen im Kollegium der Hessischen
+Lehrkräfteakademie.
