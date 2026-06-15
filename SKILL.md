@@ -115,7 +115,7 @@ Wortlaut:
 - **Rollenkonsistenz explizit machen**: Bei Dialogpartnern immer explizit formulieren, dass die Figur in der Rolle bleibt, auch wenn die Lehrkraft das nicht erwähnt hat.
 - **Keine didaktischen Meta-Kommentare** in den generierten Texten. Die Texte gehen direkt in AIS.chat-Formulare. Sie sprechen Lernende an oder instruieren die KI, nicht die Lehrkraft.
 - **Sprachmodell-Feld nur mit Modellname**: Das Feld „Sprachmodell" in der Ausgabe enthält ausschließlich den Modellnamen (z.B. `GPT-5 nano`). Eine Begründung steht **nicht** in diesem Feld, da es 1:1 in das AIS.chat-Formular kopiert wird, dort ist nur Platz für einen Modellnamen.
-- **Modellwahl konservativ, Entscheidung bei der Lehrkraft**: Setze im Sprachmodell-Feld als Default ein effizientes Modell der unteren Leistungsklasse ein. Treffe die Wahl im Zweifel zugunsten des effizienteren Modells, die Lehrkraft kann jederzeit hochstufen, das Modellangebot unterscheidet sich nach Bundesland und ändert sich regelmäßig. Empfehle **nicht** automatisch ein stärkeres Modell, nur weil die Vorlage „komplex" wirkt. Im Empfehlungs-Abschnitt der Ausgabe immer auf die Modell-Übersicht verweisen: <https://mgkurz.github.io/ki-modell-auswahl/>
+- **Modellwahl konservativ, Entscheidung bei der Lehrkraft**: Setze im Sprachmodell-Feld als Default ein effizientes Modell der unteren Leistungsklasse ein (Modellliste siehe Abschnitt „Verfügbare Modelle" unten). Treffe die Wahl im Zweifel zugunsten des effizienteren Modells, die Lehrkraft kann jederzeit hochstufen, das Modellangebot unterscheidet sich nach Bundesland und ändert sich regelmäßig. Empfehle **nicht** automatisch ein stärkeres Modell, nur weil die Vorlage „komplex" wirkt. Im Empfehlungs-Abschnitt der Ausgabe immer auf die Modell-Übersicht verweisen: <https://mgkurz.github.io/ki-modell-auswahl/>
 - **Strukturierung des Instruktionsfelds mit Markdown**: Das Instruktionsfeld geht als Text in den Systemprompt des Modells ein. AIS.chat bettet es in einen durchgängig in Markdown formatierten Systemprompt ein (Hauptsektionen mit `##`, das Lehrkraft-Feld als Body unter einer `###`-Überschrift), rendert die Antworten als Markdown (`react-markdown` mit `remark-gfm`) und weist das Modell systemseitig ausdrücklich an, Markdown zu nutzen. Strukturiere das Instruktionsfeld daher selbst in Markdown:
   - **Block-Überschriften als Markdown der vierten Ebene** (`#### Rolle`, `#### Kontext`, `#### Verhalten`, `#### Format`; beim Dialogpartner `#### Simulierte Person`, `#### Zielgruppe`, `#### Kontext`, `#### Verhalten`, kein FORMAT-Block). AIS.chat hängt das Instruktionsfeld unter eine `###`-Überschrift; `####` setzt die Hierarchie eine Ebene tiefer sauber fort, ohne mit den AIS.chat-eigenen Ebenen zu kollidieren. Mixed Case, keine Großbuchstaben.
   - **Alternative für sehr kurze Vorlagen**: fette Labels statt Überschriften (`**Rolle**`, `**Verhalten**`), wenn eine eigene Heading-Ebene überdimensioniert wäre.
@@ -125,9 +125,49 @@ Wortlaut:
   - Bei komplexen Vorlagen (z.B. funktionaler Dialogpartner im „Sid"-Stil) ist eine abweichende Struktur erlaubt, sollte aber bewusst gewählt werden.
   - **Trade-off, transparent**: Das offizielle „Beispiel anzeigen" im AIS.chat-Formular nutzt Großbuchstaben- bzw. Mixed-Case-Zeilen ohne Markdown. Wer maximale optische Übereinstimmung mit diesem Formular-Beispiel sucht, kann bei Großbuchstaben bleiben; der funktionale Unterschied fürs Modell ist gering. Dieser Skill wählt bewusst Markdown (`####`), weil es konsistent mit dem tatsächlichen, durchgängig in Markdown gehaltenen Systemprompt-Container von AIS.chat ist.
 
+## Verfügbare Modelle
+
+Snapshot der in AIS.chat auswählbaren Modelle. Das tatsächliche Angebot **unterscheidet sich nach Bundesland und ändert sich regelmäßig** — diese Liste ist eine Orientierung, nicht der verbindliche Stand. Die Modell-Übersicht (<https://mgkurz.github.io/ki-modell-auswahl/>) bleibt die maßgebliche Quelle, und die Lehrkraft entscheidet final.
+
+Die Einteilung in Leistungsklassen folgt der Namens- bzw. Größenkonvention der Anbieter (nano < mini < Basis; `.5` und höhere Versionsnummer = Aufwertung; „Lite" = effiziente Variante; 8B < 70B Parameter), nicht eigenen Messungen. Sie dient nur der Default-Wahl und ist im Zweifel anzupassen.
+
+**Effizient / untere Leistungsklasse** (Default für die meisten Vorlagen):
+
+- `GPT-5 nano` — Standard-Default in den Beispielen dieses Skills
+- `GPT-4o-mini`
+- `Gemini 3.1 Lite`
+- `Llama-3.1-8B`
+- `Mistral Nemo Instruct`
+
+**Mittlere Leistungsklasse** (nur bei erkennbar höherem Anspruch):
+
+- `GPT-5 mini`
+- `o3-mini` — reasoning-orientiert, dadurch tendenziell langsamer und tokenintensiver
+- `Llama-3.3-70B`
+
+**Obere Leistungsklasse** (nur bei nachgewiesenem Bedarf, höchster Tokenverbrauch):
+
+- `GPT-5`
+- `GPT-5.5`
+
+Regeln für das Sprachmodell-Feld:
+
+- Nur Modellnamen aus dieser Liste verwenden, exakt in dieser Schreibweise.
+- Default ist ein Modell der unteren Klasse, im Zweifel `GPT-5 nano`.
+- Nicht automatisch hochstufen, weil eine Vorlage „komplex" wirkt. Höhere Klassen nur, wenn der konkrete Einsatz es plausibel verlangt (z.B. anspruchsvolle Textproduktion oder mehrschrittiges Schließen), und dann mit kurzer Begründung **im Empfehlungs-Abschnitt**, nicht im Feld selbst.
+
 ## Ausgabeformat
 
-Gib die Felder in exakt der Reihenfolge und mit exakt den Titeln aus, die in der jeweiligen Referenzdatei definiert sind. Unter jedem Feldtitel steht genau ein zusammenhängender Text, kein zusätzlicher Kommentar, keine Erklärung, keine Formatierung außer dem Text selbst und dem Markup innerhalb des Instruktionsfelds. Die Ausgabe muss 1:1 in die AIS.chat-Formulare kopierbar sein.
+Gib die Felder in exakt der Reihenfolge und mit exakt den Titeln aus, die in der jeweiligen Referenzdatei definiert sind. Unter jedem Feldtitel steht genau ein zusammenhängender Text, kein zusätzlicher Kommentar, keine Erklärung, keine Formatierung außer dem umschließenden Codeblock (siehe nächster Absatz) und dem Markup innerhalb des Felds. Die Ausgabe muss 1:1 in die AIS.chat-Formulare kopierbar sein.
+
+**Jeden Feldwert in einen Codeblock setzen (kopierfreundlich).** Gib den Inhalt jedes Formularfelds in einem umschließenden Codeblock (drei Backticks) aus, mit dem Feldtitel als Label darüber. Grund: Der Chat-Client rendert Markdown sonst weg — `####`-Überschriften und `-`-Listen würden als gerenderte Überschriften und Aufzählungen erscheinen, und beim Kopieren ginge das Markup verloren. Im Codeblock bleibt der exakte Text erhalten und lässt sich über den Kopier-Button 1:1 in das Formularfeld übernehmen. Das ist **zwingend für das Instruktionsfeld** (Dialogpartner, Lernszenario, Assistent), weil nur dieses Markdown-Markup enthält; die übrigen Felder (Name, Kurzbeschreibung, Sprachmodell, Arbeitsauftrag, Einstiegsfrage, Promptvorschläge) werden aus Konsistenz und für den Kopier-Button ebenfalls in einen Codeblock gesetzt.
+
+Regeln für den Codeblock:
+
+- Der Codeblock ist nur Transport-Container: zwischen den Backticks steht ausschließlich der Feldinhalt, kein Zusatztext. Die Backticks selbst gehören nicht ins Formular (der Kopier-Button liefert nur den Inhalt).
+- Der Feldtitel (z.B. **Instruktionen:**) steht als Label über dem Codeblock, nicht darin.
+- Enthält ein Feldinhalt selbst eine Zeile mit drei Backticks, einen längeren Zaun verwenden (vier Backticks oder `~~~`), damit der Block nicht vorzeitig schließt.
+- Der Abschnitt „Empfehlungen" ist Hinweistext für die Lehrkraft, wird **nicht** ins Formular kopiert und steht daher **nicht** in einem Codeblock, sondern als normaler Fließtext.
 
 Nach den Feldern: ein kurzer Abschnitt „Empfehlungen" mit genau dieser Struktur:
 
